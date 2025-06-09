@@ -87,6 +87,7 @@ class _HomePageState extends State<HomePage> {
           num change24h = data['market_data']['price_change_percentage_24h'];
           String coinImage = data["image"]["large"];
           String description = data['description']["en"];
+          Map _exchangeRates = data['market_data']["current_price"];
 
           return Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -99,7 +100,7 @@ class _HomePageState extends State<HomePage> {
                     context,
                     MaterialPageRoute(
                       builder: (BuildContext _context) {
-                        return DetailPage();
+                        return DetailPage(rates: _exchangeRates);
                       },
                     ),
                   );
