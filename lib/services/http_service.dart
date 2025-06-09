@@ -7,10 +7,14 @@ class HttpService {
 
   Appconfig? _appconfig;
   String? _base_url;
+  String? _api_key;
 
   HttpService() {
     _appconfig = GetIt.instance.get<Appconfig>();
     _base_url = _appconfig!.COIN_API_BASE_URL;
+    _api_key = _appconfig!.API_KEY;
+
+    dio.options.headers['x-cg-pro-api-key'] = '$_api_key';
   }
 
   Future<Response?> get(String _path) async {
